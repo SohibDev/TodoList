@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+			crossorigin="anonymous"
+		/>
+
+		<link
+			href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="./css/main.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1 class="test"></h1>
+		<div class="container my-5">
+			<button id="btn-theme" class="active btn">Almashtirish</button>
+
+			<h2 data-aos="zoom-in-down" class="text-center">Todo list</h2>
+
+			<select id="select">
+				<option value="all">Barchasi</option>
+				<option value="false">Bajarilmagan</option>
+				<option value="true">Bajarilgan</option>
+			</select>
+			<ul class="list-group flex-row justify-content-around d-flex">
+				<li id="all" class="w-25 list-group-item">Barchasi</li>
+				<li id="completed" class="w-25 list-group-item">
+					Bajarilgan ishlar
+				</li>
+				<li id="uncompleted" class="w-25 list-group-item">
+					Bajarilmagan ishlar
+				</li>
+			</ul>
+			<div class="card p-3">
+				<form id="add-form" class="position-relative my-3">
+					<input
+						name="todo"
+						class="form-control"
+						type="text"
+						placeholder="Add todo..."
+						id=""
+					/>
+					<input
+						name="date"
+						class="form-control mt-2"
+						type="datetime-local"
+						placeholder="Add todo..."
+						id=""
+					/>
+					<span
+						style="display: none"
+						id="span"
+						class="text-danger position-absolute top-100"
+						>iltimos nom kiriting</span
+					>
+					<button class="btn btn-primary form-control mt-3">
+						Add
+					</button>
+				</form>
+				<form class="form-control">
+					<input
+						class="form-control"
+						type="search"
+						name="search"
+						id="search"
+						placeholder="Search..."
+					/>
+				</form>
+				<ul id="todos" class="list-group mt-3"></ul>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div
+			class="modal fade"
+			id="exampleModal"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">
+							Todoni o'zgartirish
+						</h1>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<form id="edit-form" class="form-control">
+							<input
+								id="edit-todo"
+								class="form-control"
+								type="text"
+								placeholder="Edit todo"
+							/>
+							<input
+								id="edit-date"
+								class="form-control my-3"
+								type="datetime-local"
+								placeholder="date"
+							/>
+							<p class="edit-date-text">🗓️ 00:00 / 03.05.2013</p>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-dismiss="modal"
+						>
+							Yopish
+						</button>
+						<button
+							id="edit-btn"
+							type="button"
+							data-bs-dismiss="modal"
+							class="btn btn-primary"
+						>
+							Saqlash
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<ul id="test"></ul>
+
+		<template id="todo-template">
+			<div class="list-group-item d-flex justify-content-between">
+				<div>
+					<h3 id="title" class="title1"></h3>
+					<p class="date">🗓️</p>
+				</div>
+				<div>
+					<button
+						data-id="${todo.id}"
+						class="complete-btn btn btn-info text-white"
+					>
+						Completed
+					</button>
+					<button
+						data-id="${todo.id}"
+						data-bs-toggle="modal"
+						data-bs-target="#exampleModal"
+						class="btn btn-primary"
+					>
+						Edit
+					</button>
+					<button data-id="${todo.id}" class="btn btn-danger">
+						Delete
+					</button>
+				</div>
+			</div>
+		</template>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+		<script src="./js/utils/findElement.js"></script>
+		<script src="./js/utils/generateData.js"></script>
+		<script src="./js/data.js"></script>
+		<script src="./js/films.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
+</html>
